@@ -31,52 +31,6 @@ game: {
 }
 */
 
-function getPoints(matrix, i, j) {
-	let pts = 0;
-	pts += getPointsUp(matrix, i, j);
-	pts += getPointsUpDiag(matrix, i, j);
-	pts += getPointsRight(matrix, i, j);
-	pts += getPointsDownDiag(matrix, i, j);
-	return pts;
-}
-
-function getPointsUp(matrix, i, j) {
-	var initial = matrix[i][j];
-	var good = initial!==0 && i+3<matrix.length;
-	for (var k=0; k<4 && good; k++) {
-		good = matrix[i+k][j]===initial;
-	}
-	return good ? 1 : 0;
-}
-
-function getPointsUpDiag(matrix, i, j) {
-	var initial = matrix[i][j];
-	var good = initial!==0 && i+3<matrix.length && j+3<matrix[i].length;
-	for (var k=0; k<4 && good; k++) {
-		good = matrix[i+k][j+k]===initial;
-	}
-	return good ? 1 : 0;
-}
-
-function getPointsRight(matrix, i, j) {
-	var initial = matrix[i][j];
-	var good = initial!==0 && j+3<matrix[i].length;
-	for (var k=0; k<4 && good; k++) {
-		good = matrix[i][j+k]===initial;
-	}
-	return good ? 1 : 0;
-}
-
-function getPointsDownDiag(matrix, i, j) {
-	var initial = matrix[i][j];
-	var good = initial!==0 && i-3>=0 && j+3<matrix[i].length;
-	for (var k=0; k<4 && good; k++) {
-		good = matrix[i-k][j+k]===initial;
-	}
-	return good ? 1 : 0;
-}
-
-
 Meteor.methods({
 
 	'games.newGame'(p=false) {

@@ -12,7 +12,8 @@ export default class Game extends Component {
 		}
 	}
 
-	getPoints(matrix, i, j) {
+	//Creo que su código en general está muy bien, además de que la idea es muy buena. Tambien vi que ya le están trabajando a la accesibilidad, nose si les falte mucho. Lo unico que veo que se puede mejorar son los métodos de cálcular el puntaje del tablero, puesto que si una linea de 4 da 1 punto se podría calcular cada vez que se agrega una ficha y no al final de todo el juego, además de que le daría más dinamismo.	
+  	getPoints(matrix, i, j) {
 		let pts = 0;
 		pts += this.getPointsUp(matrix, i, j);
 		pts += this.getPointsUpDiag(matrix, i, j);

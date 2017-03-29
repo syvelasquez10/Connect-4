@@ -199,7 +199,7 @@ export default class Game extends Component {
 		}
 		this.setState({p1score, p2score});
 	}
-
+	//Me parece que colocar los tags html en métodos ayuda a que el código se entienda mejor, aunque lo hace mucho más largo, lo que puede terminar haciendo que el código se vuelva dificil de leer porque toca estar buscando el método en toda la clase. Nose si sea buena idea decir que poner en métodos y que directamente en el return(), de pronto algo como la parte de waiting se pueda poner en el return() en vez de en un método
 	render() {
 		return (
 			<div>

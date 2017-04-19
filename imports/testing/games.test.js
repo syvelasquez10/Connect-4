@@ -1,3 +1,6 @@
+//Creo que este test unitario para el juego está bastante completo, pero si quedo con la duda de si los métodos que tienen se pueden ejecutar sin login
+
+
 /* eslint-env mocha */
 /* eslint prefer-arrow-callback: "off"*/
 /* eslint func-names: "off"*/
@@ -18,16 +21,20 @@ if (Meteor.isServer) {
     beforeEach(function () {
       resetDatabase();
     });
+    //Creo que no hay necesidad de resetaer la base de datos al terminar la prueba porque igualmente se va a resetear antes de empezar la siguiente
+  /*
     afterEach(function () {
       resetDatabase();
-    });
+    });*/
 
+    //Nose si en esta parte se deba estar logueado, pero creo que si. Pueden utilizar un mock del Meteor.user para simular el login
     function create(p) {
       const createGame = Meteor.server.method_handlers['games.newGame'];
       const invocation = { userId, username };
       createGame.apply(invocation, [p]);
     }
 
+    //Lo mismo del login es esta
     function join(userId2, username2) {
       const gameId = Games.find({ p: false }).fetch()[0]._id;
       const joinGame = Meteor.server.method_handlers['games.join'];
